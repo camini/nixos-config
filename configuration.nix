@@ -104,7 +104,7 @@
 	bash-completion
 	git
    # Theme/visuel
-	plymouth
+  plymouth
   adw-gtk3
   qogir-icon-theme
    # Internet/mail
