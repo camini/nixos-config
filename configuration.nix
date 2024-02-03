@@ -99,37 +99,36 @@
   
   # Mes applications.
   environment.systemPackages = with pkgs; [
-   # Editeur/code  
-	vscode
-	bash-completion
-	git
+   # Editeur/code
+   vscode
+   bash-completion
+   git
    # Theme/visuel
-  plymouth
-  adw-gtk3
-  qogir-icon-theme
+   plymouth
+   adw-gtk3
+   qogir-icon-theme
    # Internet/mail
-  firefox
-	thunderbird
-	discord
+   firefox
+   thunderbird
+   discord
    # Shell
-  neofetch
-  btop
-	discord
+   neofetch
+   btop
+   discord
    # Emulateur
-	yuzu-mainline
+   yuzu-mainline
    # Video
-	vlc
+   vlc
    # Gnome extensions
-	gnome.gnome-tweaks
-	gnomeExtensions.blur-my-shell
-	gnomeExtensions.spotify-tray
-	gnomeExtensions.appindicator
-	gnomeExtensions.dash-to-dock	
+   gnome.gnome-tweaks
+   gnomeExtensions.blur-my-shell
+   gnomeExtensions.spotify-tray
+   gnomeExtensions.appindicator
+   gnomeExtensions.dash-to-dock	
   ];
   
   # Installation de Steam.
   programs.steam = {
-  enable = true;
   remotePlay.openFirewall = true; 
   dedicatedServer.openFirewall = true; 
 };
