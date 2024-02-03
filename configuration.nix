@@ -113,7 +113,7 @@
 	discord
    # Shell
   neofetch
-	btop
+  btop
 	discord
    # Emulateur
 	yuzu-mainline
