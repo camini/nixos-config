@@ -5,6 +5,7 @@
     [ ./hardware-configuration.nix
       ./config/VM.nix
       ./config/AMD-pstate.nix
+      ./config/Alias.nix
       ];
 
   # Completion bash.
