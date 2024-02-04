@@ -6,6 +6,7 @@
       ./config/VM.nix
       ./config/AMD-pstate.nix
       ./config/Alias.nix
+      ./config/Nix-clean.nix
       ];
 
   # Completion bash.
@@ -87,15 +88,7 @@
     extraGroups = [ "video" "audio" "usb" "networkmanager" "wheel" ];
   };
 
-  # Nettoyage Nix.
-  nix.optimise.automatic = true;
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-     automatic = true;
-     dates = "weekly";
-     options = "--delete-older-than 7d";
-   };
-
+  
   # Paquets non libres.
   nixpkgs.config.allowUnfree = true;
   
