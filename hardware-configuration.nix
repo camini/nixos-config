@@ -12,8 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "amd_pstate=active" "mitigations=off" ];
-
+  
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5b64c264-f264-4730-a66f-5a0ff5bb2c09";
       fsType = "ext4";
