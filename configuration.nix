@@ -3,7 +3,8 @@
 {
   imports =
     [ ./hardware-configuration.nix
-      ./VM.nix
+      ./config/VM.nix
+      ./config/AMD-pstate.nix
       ];
 
   # Completion bash.
