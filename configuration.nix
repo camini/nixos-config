@@ -108,6 +108,7 @@
    plymouth
    adw-gtk3
    qogir-icon-theme
+   mangohud
    # Internet/mail
    firefox
    thunderbird
