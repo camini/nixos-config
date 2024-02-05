@@ -1,1 +1,1 @@
-Ma config , CPU AMD , GPU AMD
+Ma config , CPU AMD , GPU AMD le tout sous GNOME
