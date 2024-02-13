@@ -5,14 +5,14 @@
     [ ./hardware-configuration.nix
       ./config/VM.nix
       ./config/AMD-pstate.nix
-      ./config/Alias.nix
+      ./config/Alias.nix      
       ./config/Nix-clean.nix
       ./config/Gnome-clean.nix
-      ];
+];
 
   # Completion bash.
   programs.bash.enableCompletion = true;
-
+   
   # Boot.
   boot.plymouth.enable = true;
   boot.loader.systemd-boot.enable = true;
@@ -21,10 +21,45 @@
   services.fstrim.enable =  true;
 
   # GPU.
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.driSupport = true; 
   hardware.opengl.driSupport32Bit = true; 
-     
+  programs.corectrl.gpuOverclock.enable = true;
+  environment.sessionVariables = {
+  #If your cursor becomes invisible
+  WLR_NO_HARDWARE_CURSORS = "1";
+  #Hint electron apps to use wayland
+  NIXOS_OZONE_WL = "1";
+};
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = false;
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
+   
   # Nom de la machine.
   networking.hostName = "nixos"; 
   
@@ -89,7 +124,6 @@
     extraGroups = [ "video" "audio" "usb" "networkmanager" "wheel" ];
   };
 
-  
   # Paquets non libres.
   nixpkgs.config.allowUnfree = true;
   
@@ -115,7 +149,11 @@
    # Emulateur
    yuzu-mainline
    # Video
+   libsForQt5.kdenlive
+   obs-studio-plugins.obs-vkcapture
+   obs-studio
    vlc
+   corectrl
    # Gnome extensions
    gnome.gnome-tweaks
    gnomeExtensions.blur-my-shell
