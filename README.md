@@ -1,1 +1,1 @@
-Ma config , CPU AMD , GPU AMD le tout sous GNOME
+Ma config , CPU AMD , GPU NVIDIA le tout sous GNOME
