@@ -147,10 +147,6 @@
     "/".options =     [ "subvol=@"     "compress=zstd:3" "noatime" "defaults" "discard"];
     "/home".options = [ "subvol=@home" "compress=zstd:3" "noatime" "defaults" "discard"];
   };
-  fileSystems."/home/cammi/Jeux" =
-  { device = "/dev/disk/by-label/Jeux";
-    fsType = "ext4";
-  };
 
   #/-----------\# 
   #| ° Steam ° |#
