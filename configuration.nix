@@ -9,6 +9,7 @@
       ./config/Alias.nix      
       ./config/Nix-clean.nix
       ./config/Gnome-clean.nix
+      ./config/Nvidia.nix
     ];
 
   #/--------------------\# 
@@ -77,24 +78,6 @@
     };
     pulse.enable   = true;
   };
-  
-  #/---------\# 
-  #| ° GPU ° |#
-  #\---------/#
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  }; 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
 
   #/-----------------------------------\# 
   #| ° Xserver & Desktop Environment ° |#
@@ -141,7 +124,6 @@
    # Shell
    neofetch
    btop
-   discord
    # Emulateur
    yuzu-mainline
    # Video
