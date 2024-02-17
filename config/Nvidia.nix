@@ -17,6 +17,7 @@
   hardware.nvidia.powerManagement.finegrained = false;
   hardware.nvidia.open = false;
   hardware.nvidia.nvidiaSettings = true;
+# Special config to load the latest 535 driver for the support of the 4070 SUPER
   hardware.nvidia.package = let 
   rcu_patch = pkgs.fetchpatch {
     url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
