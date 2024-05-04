@@ -4,7 +4,6 @@
   imports = 
     [
       ./hardware-configuration.nix
-      ./config/VM.nix
       ./config/AMD-pstate.nix
       ./config/Alias.nix      
       ./config/Nix-clean.nix
@@ -16,6 +15,8 @@
   #| ° Kernel Version ° |#
   #\--------------------/#
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; };
+  services.envfs.enable = true;
 
   #/-----------------------------\# 
   #| ° Boot Loader & Animation ° |#
@@ -25,10 +26,6 @@
      systemd-boot.enable      = true;
      efi.canTouchEfiVariables = true;
     };
-    #plymouth = {
-    #  enable = true;
-    #  theme  = "breeze";
-    #};
   };
 
   #/----------------\# 
@@ -86,8 +83,12 @@
     enable = true;
     displayManager.gdm.enable   = true;
     desktopManager.gnome.enable = true;
+    #displayManager.sddm.enable = true;
+    #desktopManager.plasma5.enable = true;
+    #displayManager.defaultSession = "plasmawayland";
+    #displayManager.sddm.wayland.enable = true;
   };
-
+    
   #/--------------------------\# 
   #| ° Users Configurations ° |#
   #\--------------------------/#
@@ -100,42 +101,51 @@
     description = "cammi";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "usb" ];
   };
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   #/---------------------\# 
   #| ° System Packages ° |#
   #\---------------------/#
   environment.systemPackages = with pkgs; [
    # hardware
-   compsize
+   hwinfo
    pciutils
    usbutils   
    # Editeur/code
    vscode
    bash-completion
    git
+   # Bureautique
+   libreoffice-fresh
+   hunspellDicts.fr-any
    # Theme/visuel
    adw-gtk3
    qogir-icon-theme
+   orchis-theme
    mangohud
+   goverlay
    # Internet/mail
+   transmission
    firefox
    thunderbird
    discord
    # Shell
+   nerdfonts
    neofetch
    btop
    # Emulateur
-   yuzu-mainline
+   ryujinx
+   # Impression 3d
+   prusa-slicer
    # Video
-   libsForQt5.kdenlive
    obs-studio-plugins.obs-vkcapture
    obs-studio
    vlc
    # Gnome extensions
    gnome.gnome-tweaks
    gnomeExtensions.blur-my-shell
-   gnomeExtensions.spotify-tray
    gnomeExtensions.appindicator
+   gnomeExtensions.just-perfection
    gnomeExtensions.dash-to-dock	
   ];
     
