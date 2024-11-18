@@ -3,9 +3,12 @@
 {
   
   environment.systemPackages = with pkgs; [
-  vesktop
+  github-desktop
+  davinci-resolve
   freecad
-  celluloid
+  prusa-slicer
+  dconf-editor
+  vesktop
   thunderbird
   firefox
   mangohud
@@ -14,7 +17,7 @@
   fastfetch
   obs-studio
   libreoffice-fresh
-  
+  nvtopPackages.amd  
   ];
 
 }

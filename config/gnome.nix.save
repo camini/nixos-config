@@ -20,7 +20,7 @@ environment.systemPackages = with pkgs; [
 services.xserver.excludePackages = [ pkgs.xterm ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-music gnome-tour gnome-weather 
-    tali iagno hitori atomix simple-scan
+    totem tali iagno hitori atomix simple-scan
     yelp gnome-maps gnome-clocks 
     geary xterm gnome-user-docs epiphany
     gnome-packagekit packagekit system-config-printer gnome-tour
